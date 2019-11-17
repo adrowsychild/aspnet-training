@@ -3,7 +3,7 @@ namespace NET.W._2019.Dyl._02
     class Program
     {
 		
-		/// <summary>
+	/// <summary>
         /// A method that takes a integer and
         /// returns the largest integer consisting of the digits of the original number,
         /// and - 1 (null), if there is no such number
@@ -55,4 +55,4 @@ namespace NET.W._2019.Dyl._02
 
             return -1;
         }
-	}
+}
