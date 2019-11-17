@@ -2,7 +2,6 @@ namespace NET.W._2019.Dyl._02
 {
     class Program
     {
-		
 	/// <summary>
         /// A method that takes a integer and
         /// returns the largest integer consisting of the digits of the original number,
