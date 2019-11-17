@@ -19,13 +19,9 @@ namespace NET.W._2019.Dyl._02
             int mask = 0;
             int numInShifted = numIn << i;
 
-            if (i == j)
-                mask = setOne(mask, i);
-            else
-            {
-                for (int k = i; k <= j; k++)
-                    mask = setOne(mask, k);
-            }
+            
+            for (int k = i; k <= j; k++)
+                mask = setOne(mask, k);
 
             result = (mask & numInShifted) | (~mask & numSourse);
 
