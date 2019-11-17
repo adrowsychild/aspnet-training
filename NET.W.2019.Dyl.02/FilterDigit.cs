@@ -2,7 +2,7 @@ namespace NET.W._2019.Dyl._02
 {
     class Program
     {
-		/// <summary>
+	/// <summary>
         /// A method that takes a list of numbers
         /// and filters the list so that it contains only the numbers
         /// that has a given digit in it
@@ -35,7 +35,7 @@ namespace NET.W._2019.Dyl._02
                     }
                 }
             }
-
+		
             return output;
         }
-	}
+}
