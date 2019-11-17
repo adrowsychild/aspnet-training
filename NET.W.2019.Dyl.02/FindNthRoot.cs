@@ -4,7 +4,7 @@ namespace NET.W._2019.Dyl._02
 {
     class Program
     {
-		/// <summary>
+	/// <summary>
         /// A method that finds the root of the nth power from the number
         /// with the given presicion
         /// </summary>
@@ -33,5 +33,5 @@ namespace NET.W._2019.Dyl._02
 			
             return output;
         }
-	}
+}
 }
