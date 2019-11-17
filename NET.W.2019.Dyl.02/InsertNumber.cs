@@ -4,7 +4,7 @@ namespace NET.W._2019.Dyl._02
 {
     class Program
     {
-		/// <summary>
+	/// <summary>
         /// A method that inserts bits (from j to i) from one number to another
         /// so that bits of the second number took the positions from j to i
         /// </summary>
