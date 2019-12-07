@@ -1,14 +1,14 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Program.cs" company="EPAM">
+// <copyright file="CompairMaxs.cs" company="EPAM">
 //     .NET training
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace EuqlidRefactor
+namespace MatrixSort
 {
     public class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
         }
     }
