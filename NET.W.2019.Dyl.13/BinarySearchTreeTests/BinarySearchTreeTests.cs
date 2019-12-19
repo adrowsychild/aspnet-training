@@ -51,6 +51,9 @@ namespace BinarySearchTreeTests
             Assert.AreEqual(postorderExpectedNumbers, numbers);
         }
 
+        #endregion
+
+        #region String
         [Test]
         public void String_DefaultCompare()
         {
@@ -145,6 +148,159 @@ namespace BinarySearchTreeTests
             }
             List<string> postorderExpectedStrings = new List<string> { "t", "r", "wty", "rew", "eq", "ewq", "eqwerty", "qwerty" };
             Assert.AreEqual(postorderExpectedStrings, strings);
+        }
+
+        #endregion
+
+        #region Book
+
+        [Test]
+        public void Book_DefaultCompare()
+        {
+            BinarySearchTree<Book> bookTree = new BinarySearchTree<Book>();
+            Book b1 = new Book("123-4-56-78910-1", "John", "Thoughts", "Unfamous publisher", 2019, 404, 20);
+            Book b2 = new Book("978-0-7356-6745-7", "Jeffrey Richter", "CLR via C#", "Microsoft Press", 2012, 826, 29.99m);
+            Book b3 = new Book("978-5-699-96201-3", "Markus Zusak", "The Book Thief", "EKSMO", 2018, 512, 6m);
+            bookTree.Insert(b1);
+            bookTree.Insert(b2);
+            bookTree.Insert(b3);
+
+            List<Book> books = new List<Book>();
+            foreach (var n in bookTree.PreorderTraversal())
+            {
+                books.Add(n);
+            }
+
+            List<Book> preorderExpectedBooks = new List<Book>()
+            {
+                b1, b2, b3
+            };
+            Assert.AreEqual(preorderExpectedBooks, books.ToArray());
+
+            books.Clear();
+
+            List<Book> inorderExpectedBooks = new List<Book>();
+            inorderExpectedBooks.Add(b2);
+            inorderExpectedBooks.Add(b1);
+            inorderExpectedBooks.Add(b3);
+            Assert.AreEqual(inorderExpectedBooks, books.ToArray());
+
+            books.Clear();
+
+            List<Book> postorderExpectedBooks = new List<Book>();
+            postorderExpectedBooks.Add(b2);
+            postorderExpectedBooks.Add(b3);
+            postorderExpectedBooks.Add(b1);
+            Assert.AreEqual(postorderExpectedBooks, books.ToArray());
+        }
+
+        [Test]
+        public void Book_SpecialCompare()
+        {
+            Comparison<Book> comparer = (Book x, Book y) =>
+            {
+                if (x.NumOfPages > y.NumOfPages)
+                    return 1;
+                else if (x.NumOfPages == y.NumOfPages)
+                    return 0;
+                else
+                    return -1;
+            };
+
+            BinarySearchTree<Book> bookTree = new BinarySearchTree<Book>(comparer);
+            Book b1 = new Book("123-4-56-78910-1", "John", "Thoughts", "Unfamous publisher", 2019, 404, 20);
+            Book b2 = new Book("978-0-7356-6745-7", "Jeffrey Richter", "CLR via C#", "Microsoft Press", 2012, 826, 29.99m);
+            Book b3 = new Book("978-5-699-96201-3", "Markus Zusak", "The Book Thief", "EKSMO", 2018, 512, 6m);
+            bookTree.Insert(b1);
+            bookTree.Insert(b2);
+            bookTree.Insert(b3);
+
+            List<Book> books = new List<Book>();
+            foreach (var n in bookTree.PreorderTraversal())
+            {
+                books.Add(n);
+            }
+
+            List<Book> preorderExpectedBooks = new List<Book>();
+            preorderExpectedBooks.Add(b1);
+            preorderExpectedBooks.Add(b3);
+            preorderExpectedBooks.Add(b2);
+            Assert.AreEqual(preorderExpectedBooks, books.ToArray());
+        }
+
+        #endregion
+
+        #region Point
+
+        [Test]
+        public void PointTests()
+        {
+            Comparison<Point> comparer = (Point x, Point y) =>
+            {
+                if ((x.x + x.y) > (y.x + y.y))
+                    return 1;
+                else if ((x.x + x.y) == (y.x + y.y))
+                    return 0;
+                else
+                    return -1;
+            };
+
+            BinarySearchTree<Point> pointTree = new BinarySearchTree<Point>(comparer);
+            pointTree.Insert(new Point(0, 1));
+            pointTree.Insert(new Point(2, 1));
+            pointTree.Insert(new Point(0, 0));
+            pointTree.Insert(new Point(1, 1));
+
+            List<Point> points = new List<Point>();
+            foreach (var n in pointTree.PreorderTraversal())
+            {
+                points.Add(n);
+            }
+
+            List<Point> preorderExpectedPoints = new List<Point>
+            {
+                new Point(0, 1),
+                new Point(0, 0),
+                new Point(1, 1),
+                new Point(2, 1),
+            };
+            Assert.AreEqual(preorderExpectedPoints, points.ToArray());
+
+            points.Clear();
+
+            List<Point> inorderExpectedPoints = new List<Point>
+            {
+                new Point(0, 0),
+                new Point(0, 1),
+                new Point(1, 1),
+                new Point(2, 1),
+            };
+            Assert.AreEqual(inorderExpectedPoints, points.ToArray());
+
+            points.Clear();
+
+            List<Point> postorderExpectedPoints = new List<Point>
+            {
+                new Point(0, 0),
+                new Point(1, 1),
+                new Point(2, 1),
+                new Point(0, 1),
+            };
+            Assert.AreEqual(postorderExpectedPoints, points.ToArray());
+
+
+        }
+
+        internal struct Point
+        {
+            internal readonly int x;
+            internal readonly int y;
+
+            internal Point(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
         }
 
         #endregion
