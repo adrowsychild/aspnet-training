@@ -131,6 +131,11 @@ namespace BLL.Interface.Entities
 
         public void Withdraw(decimal sum, int withdrawBonus)
         {
+            if (sum > this.Sum)
+            {
+                throw new ArgumentException("Don't have enough money to withdraw.");
+            }
+
             Sum -= sum;
             Bonus -= WithdrawBonusLogic(sum, withdrawBonus);
         }

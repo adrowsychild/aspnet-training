@@ -41,7 +41,14 @@ namespace ConsolePL
 
             foreach (var t in creditNumbers)
             {
-                service.WithdrawAccount(t, 10);
+                try
+                {
+                    service.WithdrawAccount(t, 10);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
 
             foreach (var item in service.GetAllAccounts())
