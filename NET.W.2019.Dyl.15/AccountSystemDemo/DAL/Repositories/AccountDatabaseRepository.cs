@@ -51,8 +51,7 @@ namespace DAL.Repositories
             using (AccountContext db = new AccountContext())
             {
                 DalAccount dbAccount = db.Accounts.Find(account.Id);
-                //DalAccount dbAccount = db.Accounts.FirstOrDefault<DalAccount>(dbAcc => dbAcc.Id == account.Id);
-                //dbAccount = account;
+
                 foreach (var prop in account.GetType().GetProperties())
                 {
                     prop.SetValue(dbAccount, (prop.GetValue(account)));
